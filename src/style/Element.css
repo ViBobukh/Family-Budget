@@ -1,0 +1,22 @@
+.paragraph {
+    width: 10%;
+    margin: 5%;
+}
+
+.dataInput {
+    float: left;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+
+.caption {
+    font-size: larger;
+}
+
+.signs {
+    float: left;
+    padding: 2%;
+    margin: 0;
+}
