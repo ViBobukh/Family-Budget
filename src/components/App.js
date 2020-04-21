@@ -1,14 +1,15 @@
-import React from "react";
+import React, {Component} from "react";
 import ReactDOM from "react-dom";
 import Header from "./Header.js";
 import Content from "./Content.js"
-import '../style/App.css';
 
 function App() {
     return (
         <>
             <Header />
-            <Content />
+            <div className="main">
+                <Content />
+            </div>
         </>
     )
 }

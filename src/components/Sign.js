@@ -1,23 +1,11 @@
-import React from "react";
-import DataInput from "./Input.js";
+import React, {Component} from "react";
 
-function clickPlus() {
-    return (
-        <Input/>
-    )
-}
 
-function clickMinus() {
-    return (
-        <div/>
-    )
-}
-
-function Sign() {
+function Sign(props){
     return (
         <div className="signs">
-            <button onClick={()=><DataInput />}>+</button>
-            <button onClick={()=><div/>}>-</button>
+            <button onClick={props.onPlus}>+</button>
+            <button onClick={props.onMinus}>-</button>
         </div>
     )
 }
