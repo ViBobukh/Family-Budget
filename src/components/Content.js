@@ -1,6 +1,5 @@
-import React from "react";
+import React, {Component} from "react";
 import Element from "./Element.js"
-import '../style/Content.css';
 import Beauty from "../icon/beauty.svg"
 import Medicine from "../icon/medicine.svg"
 import Transport from "../icon/transport.svg"

@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 import img from "../icon/family.svg"
 
-import '../style/Header.css';
 
 function Header() {
     return (
