@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import Element from "./Element.js"
+import TotalElem from "./Total.js";
 import Beauty from "../icon/beauty.svg"
 import Medicine from "../icon/medicine.svg"
 import Transport from "../icon/transport.svg"
@@ -27,7 +28,14 @@ function Content() {
         {name:'Total', image: Total}
     ];
 
-    const nameArr = info.map((key)=> <Element info={key}/>);
+    const nameArr = info.map((key)=> {
+        if(key.name === 'Total'){
+            return <TotalElem info={key}/>
+        }else {
+            return <Element info={key}/>;
+        }
+    });
+
     return (
         nameArr
     )

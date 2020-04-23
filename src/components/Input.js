@@ -1,10 +1,10 @@
 import React, {Component} from "react";
 
-function DataInput() {
+function DataInput(props) {
     return (
         <>
             <input type="text" placeholder="paragraph" className="dataParagraph"/>
-            <input type="text" placeholder="sum" className="dataMoney" data-current-value="0"/>
+            <input onChange={props.addValue} type="number" placeholder="sum" className="dataMoney" data-current-value="0"/>
         </>
     )
 }
@@ -12,7 +12,7 @@ function DataInput() {
 function DataInputs(props) {
     let inputsArr = [];
     for(let i = 0; i < props.counter; ++i){
-        inputsArr.push(<DataInput/>)
+        inputsArr.push(<DataInput addValue={props.addValue}/>)
     }
 
     return(

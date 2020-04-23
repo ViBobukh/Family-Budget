@@ -7,8 +7,15 @@ class Element extends Component{
     constructor(props){
         super(props);
         this.state = {
-            counter: 0
+            counter: 0,
+            value: 0
         }
+    }
+
+    addValue(event){
+        this.setState({
+            value: this.state.value + Number(event.target.value)
+        })
     }
 
     onPlus(){
@@ -28,7 +35,7 @@ class Element extends Component{
             <div className="paragraph">
                 <Paragraph info={this.props.info}/>
                 <Sign onPlus={this.onPlus.bind(this)} onMinus={this.onMinus.bind(this)}/>
-                <DataInputs counter={this.state.counter}/>
+                <DataInputs counter={this.state.counter} addValue={this.addValue.bind(this)}/>
             </div>
         )
     }
