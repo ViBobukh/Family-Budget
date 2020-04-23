@@ -1,25 +1,24 @@
 import React, {Component} from "react";
 
-function DataInput(props) {
-    return (
-        <>
-            <input type="text" placeholder="paragraph" className="dataParagraph"/>
-            <input onChange={props.addValue} type="number" placeholder="sum" className="dataMoney" data-current-value="0"/>
-        </>
-    )
-}
-
-function DataInputs(props) {
-    let inputsArr = [];
-    for(let i = 0; i < props.counter; ++i){
-        inputsArr.push(<DataInput addValue={props.addValue}/>)
+class DataInput extends Component{
+    constructor(props){
+        super(props);
     }
 
-    return(
-        <div className='dataInput'>
-            {inputsArr}
-        </div>
-    );
+    handlerEvent(event){
+        this.setState({
+            value: (event.currentTarget.value > 0) ? this.state.value - this.state.value + Number(event.currentTarget.value) : this.state.value
+        });
+    }
+
+    render(){
+        return (
+            <>
+                <input type="text" placeholder="paragraph" className="dataParagraph"/>
+                <input onInput={this.handlerEvent.bind(this)} type="number" placeholder="sum" className="dataMoney" value={this.props.value} />
+            </>
+        )
+    }
 }
 
-export default DataInputs;
+export default DataInput;

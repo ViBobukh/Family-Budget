@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import img from "../icon/family.svg"
 
-
 function Header() {
     return (
         <h1>

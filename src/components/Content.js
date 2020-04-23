@@ -12,33 +12,46 @@ import Entertainment from "../icon/entertainment.svg"
 import Other from "../icon/other.svg"
 import Total from "../icon/total.svg"
 
+class Content extends Component{
+    constructor(props){
+        super(props);
+        this.info = [
+            {name: 'Beauty', image: Beauty},
+            {name:'Medicine', image: Medicine},
+            {name:'Transport', image: Transport},
+            {name:'Office', image: Office},
+            {name:'Payment', image: Payment},
+            {name:'Eat', image: Eat},
+            {name:'Pet', image: Pet},
+            {name:'Entertainment', image: Entertainment},
+            {name:'Other', image: Other},
+            {name:'Total', image: Total}
+        ];
+        this.state = {
+            value: 0
+        };
+        this.addValue = this.addValue.bind(this)
+    }
 
+    addValue(value){
+        this.setState({
+            value: this.state.value + Number(value)
+        })
+    }
 
-function Content() {
-    const info = [
-        {name: 'Beauty', image: Beauty},
-        {name:'Medicine', image: Medicine},
-        {name:'Transport', image: Transport},
-        {name:'Office', image: Office},
-        {name:'Payment', image: Payment},
-        {name:'Eat', image: Eat},
-        {name:'Pet', image: Pet},
-        {name:'Entertainment', image: Entertainment},
-        {name:'Other', image: Other},
-        {name:'Total', image: Total}
-    ];
+    render(){
+        const nameArr = this.info.map((key)=> {
+            if(key.name === 'Total'){
+                return <TotalElem info={key} totalValue={this.state.value}/>
+            }else {
+                return <Element info={key} addValue={this.addValue}/>;
+            }
+        });
 
-    const nameArr = info.map((key)=> {
-        if(key.name === 'Total'){
-            return <TotalElem info={key}/>
-        }else {
-            return <Element info={key}/>;
-        }
-    });
-
-    return (
-        nameArr
-    )
+        return (
+            nameArr
+        )
+    }
 }
 
 export default Content;

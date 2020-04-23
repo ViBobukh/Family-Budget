@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 
-
 function Sign(props){
     return (
         <div className="signs">
