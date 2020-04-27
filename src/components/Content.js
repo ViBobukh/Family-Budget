@@ -30,21 +30,21 @@ class Content extends Component{
         this.state = {
             value: 0
         };
-        this.addValue = this.addValue.bind(this)
+        this.addTotal = this.addTotal.bind(this);
     }
 
-    addValue(value){
+    addTotal(oldValue, newValue){
         this.setState({
-            value: this.state.value + Number(value)
-        })
+            value: (this.state.value - oldValue) + newValue
+        });
     }
 
     render(){
-        const nameArr = this.info.map((key)=> {
+        const nameArr = this.info.map((key, index)=> {
             if(key.name === 'Total'){
-                return <TotalElem info={key} totalValue={this.state.value}/>
+                return <TotalElem info={key} key={index} totalValue={this.state.value}/>
             }else {
-                return <Element info={key} addValue={this.addValue}/>;
+                return <Element info={key} key={index} addTotal={this.addTotal}/>;
             }
         });
 

@@ -3,19 +3,18 @@ import React, {Component} from "react";
 class DataInput extends Component{
     constructor(props){
         super(props);
+        this.handlerEvent = this.handlerEvent.bind(this)
     }
 
     handlerEvent(event){
-        this.setState({
-            value: (event.currentTarget.value > 0) ? this.state.value - this.state.value + Number(event.currentTarget.value) : this.state.value
-        });
+        this.props.addValue(this.props.id, event.currentTarget.value)
     }
 
     render(){
         return (
             <>
                 <input type="text" placeholder="paragraph" className="dataParagraph"/>
-                <input onInput={this.handlerEvent.bind(this)} type="number" placeholder="sum" className="dataMoney" value={this.props.value} />
+                <input onChange={this.handlerEvent} type="number" placeholder="sum" className="dataMoney" value={this.props.value}/>
             </>
         )
     }

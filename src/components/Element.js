@@ -7,28 +7,45 @@ class Element extends Component{
     constructor(props){
         super(props);
         this.state = {
-            counter: 0,
             paragraphValue: [
-                {paragraph:'', value: '' }
-            ]
 
+            ]
         };
+        this.addValue = this.addValue.bind(this);
     }
 
     onPlus(){
         this.setState({
-            paragraphValue: [...this.state.paragraphValue, {paragraph:`${this.props.info.name}`, value: '' }]
+            paragraphValue: [...this.state.paragraphValue, {id:`${this.state.paragraphValue.length}`, value: '' }]
         })
     }
 
     onMinus(){
+        const lastValue = this.state.paragraphValue.slice(-1)[0].value;
+        this.props.addTotal(Number(lastValue), 0);
         this.setState({
-            paragraphValue: this.state.paragraphValue.slice(-1)
+            paragraphValue: this.state.paragraphValue.slice(0, -1)
         })
     }
 
+
+
+    addValue(id, value){
+        const newState = [...this.state.paragraphValue];
+        newState.forEach((elem)=>{
+            this.props.addTotal(Number(elem.value), Number(value));
+            if(elem.id === id){
+                elem.value = value;
+            }
+        });
+
+        this.setState({
+            paragraphValue: newState
+        });
+    }
+
     render(){
-        const dataInput = this.state.paragraphValue.map((key)=>{ return <DataInput value={key.value} />});
+        const dataInput = this.state.paragraphValue.map((key)=>{ return <DataInput addValue={this.addValue} value={key.value} key={key.id} id={key.id} />});
         return(
             <div className="paragraph">
                 <Paragraph info={this.props.info}/>
